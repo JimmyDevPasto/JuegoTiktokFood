@@ -112,7 +112,7 @@ export const UI = () => {
               ¡Salvaste a Susana de no romper su dieta!
             </p>
             <button
-              className="mt-2 bg-green-200 text-yellow-500 font-bold p-4 rounded-md pointer-events-auto w-full"
+              className="mt-2 bg-rose-400 text-white font-bold p-4 rounded-md pointer-events-auto w-full"
               onClick={() => dispatch({ type: "restart" })}
             >
               Juguemos de Nuevo

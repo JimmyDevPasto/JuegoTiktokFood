@@ -61,12 +61,25 @@ const isHotDogManAttackable = (hotdogman) => {
 const GameContext = createContext();
 
 function gameReducer(state, action) {
+
   if (action.type === "start") {
     return {
       ...state,
+      timer:GAME_TIME,
       status: "playing",
     };
   }
+
+  if (action.type === "restart") {
+    return {
+      ...state,
+      status: "start",
+      timer: 0,
+      leaderboard: [],
+    };
+  }
+
+  
 
   if (action.type === "respawn") {
     const now = Date.now();
@@ -108,6 +121,22 @@ function gameReducer(state, action) {
   if (state.status !== "playing") {
     return state;
   }
+
+  if (action.type === "updateLoop") {
+    const timer = state.timer - 1;
+    if (timer <= 0) {
+      return {
+        ...state,
+        status: "gameover",
+      };
+    }
+    return {
+      ...state,
+      timer,
+    };
+  }
+
+
 
   const friesman = [...state.friesman];
   const hotdogman = [...state.hotdogman];
@@ -333,7 +362,7 @@ export const GameProvider = ({ children }) => {
     });
   };
 
-  useEffect(() => {
+   useEffect(() => {
     const gameLoop = setInterval(() => {
       dispatch({ type: "updateLoop" });
     }, 1000);
