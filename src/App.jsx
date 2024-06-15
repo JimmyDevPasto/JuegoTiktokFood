@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import { Experience } from "./components/Experience";
+import { Experience } from "./components/Experience2";
 import { GameProvider } from "./hooks/useGame";
 import { UI } from "./components/UI";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";

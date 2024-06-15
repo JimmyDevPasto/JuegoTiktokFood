@@ -18,7 +18,7 @@ import { Gameboard } from "./Gameboard";
 import { Hotdogman } from "./Hotdogman";
 import { Final } from "./Final";
 import { degToRad } from "three/src/math/MathUtils";
-import { Perdio } from "./Perdio";
+
 import { Grave } from "./Grave";
 import { Suspense } from "react";
 import { Explosion } from "./Explosion";
