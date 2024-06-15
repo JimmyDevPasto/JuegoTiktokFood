@@ -21,9 +21,10 @@ import { degToRad } from "three/src/math/MathUtils";
 import { Perdio } from "./Perdio";
 import { Grave } from "./Grave";
 import { Suspense } from "react";
+import { Explosion } from "./Explosion";
 
 export const Experience = () => {
-  const { friesman, hotdogman, status } = useGame();
+  const { friesman, hotdogman, status, showBomb } = useGame();
 
   return (
     <>
@@ -47,7 +48,11 @@ export const Experience = () => {
         <Gameboard position-z={GAMEBOARD_LENGTH} />
         <Gameboard position-z={-GAMEBOARD_LENGTH} />
         <Gameboard />
-
+        {
+          showBomb &&( 
+            <Explosion/>
+          )
+        }
         {friesman.map((friesman, index) => {
           const column = index % FRIESMAN_COLUMNS;
           const row = Math.floor(index / FRIESMAN_COLUMNS);

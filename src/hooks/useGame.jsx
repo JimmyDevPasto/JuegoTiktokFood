@@ -118,6 +118,13 @@ function gameReducer(state, action) {
     };
   }
 
+  if (action.type === "hideBomb") {
+    return {
+      ...state,
+      showBomb: false,
+    };
+  }
+
   if (state.status !== "playing") {
     return state;
   }
@@ -141,7 +148,7 @@ function gameReducer(state, action) {
   const friesman = [...state.friesman];
   const hotdogman = [...state.hotdogman];
 
-  if (action.type === "bomb") {
+  if (action.type === "bomb" && !state.showBomb) {
     let killed = 0;
     for (let i = 0; i < friesman.length; i++) {
       if (
@@ -205,6 +212,7 @@ function gameReducer(state, action) {
 
     return {
       ...state,
+      showBomb:true,
       friesman,
       hotdogman,
       leaderboard,
@@ -327,7 +335,7 @@ export const GameProvider = ({ children }) => {
           name: generateRandomManNames(),
         })),
     ],
-
+    showBomb: false,
     leaderboard: [],
   });
 
@@ -382,7 +390,15 @@ export const GameProvider = ({ children }) => {
     }
   }, []);
 
-  const { friesman, hotdogman, status, timer, leaderboard } = gameState;
+  const { friesman, hotdogman, status, timer, leaderboard, showBomb } = gameState;
+
+  useEffect(() => {
+    if (!showBomb) return;
+    const timeout = setTimeout(() => {
+      dispatch({ type: "hideBomb" });
+    }, 900);
+    return () => clearTimeout(timeout);
+  }, [showBomb]);
 
   return (
     <GameContext.Provider
@@ -395,7 +411,8 @@ export const GameProvider = ({ children }) => {
         timer,
         leaderboard,
         isFrismanAttackable,
-        isHotDogManAttackable
+        isHotDogManAttackable,
+        showBomb
       }}
     >
       {children}

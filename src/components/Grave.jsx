@@ -8,6 +8,7 @@ import React, { useRef } from "react";
 import { SCROLL_SPEED } from "../App";
 import { TextureLoader } from "three";
 import { useLoader } from "@react-three/fiber";
+import { Explosion } from "./Explosion";
 
 export function Grave({player,...props}) {
   const { nodes, materials } = useGLTF('/models/grave.glb')
@@ -20,6 +21,13 @@ export function Grave({player,...props}) {
 
   return (
     <group {...props} dispose={null} ref={ref}>
+      <Explosion
+        limitX={1}
+        limitY={5}
+        limitZ={3}
+        scale={0.15}
+        multicolor={false}
+      />
       <mesh 
       castShadow
       receiveShadow
