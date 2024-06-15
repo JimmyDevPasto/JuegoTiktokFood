@@ -16,6 +16,12 @@ import {
 } from "../App";
 import { Gameboard } from "./Gameboard";
 import { Hotdogman } from "./Hotdogman";
+import { Final } from "./Final";
+import { degToRad } from "three/src/math/MathUtils";
+import { Perdio } from "./Perdio";
+import { Grave } from "./Grave";
+import { Suspense } from "react";
+
 export const Experience = () => {
   const { friesman, hotdogman, status } = useGame();
 
@@ -23,6 +29,12 @@ export const Experience = () => {
     <>
       <OrbitControls />
       <Environment preset="sunset" />
+      <Final 
+        position-y={2}
+        rotation-x={degToRad(-20)}
+        visible={status === "gameover"}
+       // scale={[0.5, 0.5, 0.5]} // Cambia los valores según necesites
+      />
       <group visible={status === "playing"}>
         <Gameboard />
         <Gameboard position-z={GAMEBOARD_LENGTH} />
@@ -41,6 +53,13 @@ export const Experience = () => {
               position-z={-1 - row * FRIESMAN_SPACE_ROW}
               position-x={xPos}
             >
+              {
+                friesman.dead && (
+                  <Suspense fallback={null}>
+                    <Grave position-y={1} position-z={-0.5} player={friesman.killedBy}/>
+                  </Suspense>
+                )
+              }
               <Friesman friesman={friesman} />
             </group>
           );
@@ -62,6 +81,13 @@ export const Experience = () => {
 
           return (
             <group key={index} position-z={zPos} position-x={xPos}>
+              {
+                hotdogman.dead && (
+                  <Suspense fallback={null}>
+                    <Grave position-y={1} position-z={-0.5} player={hotdogman.killedBy}/>
+                  </Suspense>
+                )
+              }
               <Hotdogman hotdogman={hotdogman} />
             </group>
           );

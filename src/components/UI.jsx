@@ -5,10 +5,11 @@ import { randInt } from "three/src/math/MathUtils";
 
 import IconFriesman from "../assets/icon-fries.png";
 import IconHotdogman from "../assets/icon-dog.png";
+import imgDefecto from "/public/img/logojimmy.png";
 
 const fakeUser = {
   username: "Jimmy",
-  userPhotoUrl: "https://lh3.googleusercontent.com/a/ACg8ocKwAbmduYjW2_DoszI6VFxM--bmryzglroyzTPUplcDS3LjHMUE=s288-c-no",
+  userPhotoUrl: "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d",
 };
 
 const gradients = [
@@ -58,7 +59,7 @@ export const UI = () => {
           >
             <img
               className="w-20 h-20 rounded-full border-4 border-white border-opacity-50"
-              src={player.userPhotoUrl}
+              src={player.userPhotoUrl || imgDefecto}
               alt="Player avatar"
             />
             <h2 className="font-bold text-sm text-white truncate max-w-full">

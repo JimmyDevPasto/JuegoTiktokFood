@@ -3,7 +3,7 @@ import { randInt } from "three/src/math/MathUtils.js";
 import { insertCoin, onTikTokLiveEvent } from "playroomkit";
 import { DEBBUG_MODE } from "../App";
 
-const GAME_TIME=10; 
+const GAME_TIME=60; 
 const NB_friesman = 4;
 const NB_hotdogman = 4;
 const FRIESMAN_RESPAWN_TIME = 3000;
