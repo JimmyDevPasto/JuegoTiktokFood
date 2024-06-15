@@ -1,4 +1,4 @@
-import { OrbitControls, Environment } from "@react-three/drei";
+import { OrbitControls, Environment} from "@react-three/drei";
 import { Friesman } from "./friesman";
 import { Principal } from "./Principal";
 import { useGame } from "../hooks/useGame";
@@ -29,6 +29,13 @@ export const Experience = () => {
     <>
       <OrbitControls />
       <Environment preset="sunset" />
+      <directionalLight
+        position={[10, 8, 20]}
+        intensity={0.5}
+        castShadow
+        shadow-mapSize-width={1024}
+        shadow-mapSize-height={1024}
+      ></directionalLight>
       <Final 
         position-y={2}
         rotation-x={degToRad(-20)}

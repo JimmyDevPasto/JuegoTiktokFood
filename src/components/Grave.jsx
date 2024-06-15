@@ -12,7 +12,7 @@ import { useLoader } from "@react-three/fiber";
 export function Grave({player,...props}) {
   const { nodes, materials } = useGLTF('/models/grave.glb')
   const texture = useTexture(player.userPhotoUrl);
-  const fallbackTexture = useLoader(TextureLoader, "/public/img/logojimmy.png"); // Asegúrate de tener una imagen local para el fallback
+  //const fallbackTexture = useLoader(TextureLoader, "/public/img/logojimmy.png"); // Asegúrate de tener una imagen local para el fallback
   const ref = useRef();
   useFrame((_, delta) => {
     ref.current.position.z -= SCROLL_SPEED * delta;
@@ -22,7 +22,7 @@ export function Grave({player,...props}) {
     <group {...props} dispose={null} ref={ref}>
       <mesh geometry={nodes.grave_A.geometry} material={materials.HalloweenBits} />    
       <mesh geometry={nodes.Plane.geometry} position={[0, 0, 1.406]}>
-        <meshBasicMaterial map={texture || fallbackTexture } />
+        <meshBasicMaterial map={texture} />
       </mesh>
     </group>
   )

@@ -5,7 +5,7 @@ import { randInt } from "three/src/math/MathUtils";
 
 import IconFriesman from "../assets/icon-fries.png";
 import IconHotdogman from "../assets/icon-dog.png";
-import imgDefecto from "/public/img/logojimmy.png";
+//import imgDefecto from "/public/img/logojimmy.png";
 
 const fakeUser = {
   username: "Jimmy",
