@@ -9,6 +9,7 @@ import { SkeletonUtils } from 'three-stdlib';
 import { useGraph } from '@react-three/fiber';
 import { useFrame } from '@react-three/fiber';
 import { lerp } from "three/src/math/MathUtils";
+import { useGame } from '../hooks/useGame';
 
 export function Friesman({friesman,...props}) {
   const group = useRef()
@@ -18,6 +19,8 @@ export function Friesman({friesman,...props}) {
   // useGraph creates two flat object collections for nodes and meterials
   const {nodes} = useGraph(clone); 
   const { actions } = useAnimations(animations, group)
+  const nameMaterial = useRef(); 
+  const {isFrismanAttackable} = useGame(); 
 
   useEffect(()=>{
     actions["Run"].time= Math.random()* actions["Run"].getClip().duration; 
@@ -30,6 +33,11 @@ export function Friesman({friesman,...props}) {
       }else{
         group.current.position.z= lerp(group.current.position.z,0,delta *2)
       }
+      nameMaterial.current.opacity = lerp(
+        nameMaterial.current.opacity,
+        isFrismanAttackable(friesman) ? 1 : 0,
+        delta * 2
+      );
   })
 
   return (
@@ -39,14 +47,21 @@ export function Friesman({friesman,...props}) {
         <Text fontSize={0.42} font="fonts/PixelifySans-Regular.ttf">
           {friesman.name}
           <meshStandardMaterial
-            color="red"            
+            color="red"
+            emissive={"orange"}
+            emissiveIntensity={2}
+            toneMapped={false}
+            ref={nameMaterial}            
           />
         </Text>
       </Billboard>      
       <group name="Scene">
         <group name="Armature" rotation={[Math.PI / 2, 0, 0]}>
           <primitive object={nodes.mixamorigHips} />
-          <skinnedMesh name="_100Avatars_118_COOLFRIES" geometry={nodes._100Avatars_118_COOLFRIES.geometry} material={materials._118_CoolFries} skeleton={nodes._100Avatars_118_COOLFRIES.skeleton} morphTargetDictionary={nodes._100Avatars_118_COOLFRIES.morphTargetDictionary} morphTargetInfluences={nodes._100Avatars_118_COOLFRIES.morphTargetInfluences} />
+          <skinnedMesh
+          castShadow
+          receiveShadow
+          name="_100Avatars_118_COOLFRIES" geometry={nodes._100Avatars_118_COOLFRIES.geometry} material={materials._118_CoolFries} skeleton={nodes._100Avatars_118_COOLFRIES.skeleton} morphTargetDictionary={nodes._100Avatars_118_COOLFRIES.morphTargetDictionary} morphTargetInfluences={nodes._100Avatars_118_COOLFRIES.morphTargetInfluences} />
         </group>
       </group>
     </group>

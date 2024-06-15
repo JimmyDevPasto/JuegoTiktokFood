@@ -8,6 +8,7 @@ import { SkeletonUtils } from 'three-stdlib';
 import { useGraph } from '@react-three/fiber';
 import { useFrame } from '@react-three/fiber';
 import { lerp } from "three/src/math/MathUtils";
+import { useGame } from '../hooks/useGame';
 
 export function Hotdogman({hotdogman,...props}) {
   const group = useRef()
@@ -17,6 +18,9 @@ export function Hotdogman({hotdogman,...props}) {
   // useGraph creates two flat object collections for nodes and meterials
   const {nodes} = useGraph(clone); 
   const { actions } = useAnimations(animations, group)
+
+  const nameMaterial = useRef();
+  const {isHotDogManAttackable} = useGame() 
 
   useEffect(()=>{
     actions["Run"].time= Math.random()* actions["Run"].getClip().duration; 
@@ -29,6 +33,12 @@ export function Hotdogman({hotdogman,...props}) {
       }else{
         group.current.position.z= lerp(group.current.position.z,0,delta *2)
       }
+
+      nameMaterial.current.opacity = lerp(
+        nameMaterial.current.opacity,
+        isHotDogManAttackable(hotdogman) ? 1 : 0,
+        delta * 2
+      );
   })
 
   return (
@@ -37,14 +47,21 @@ export function Hotdogman({hotdogman,...props}) {
         <Text fontSize={0.42} font="fonts/PixelifySans-Regular.ttf">
           {hotdogman.name}
           <meshStandardMaterial
-            color="orange"            
+            color="orange"
+            emissive={"blue"}
+            emissiveIntensity={1}
+            toneMapped={false} 
+            ref={nameMaterial}            
           />
         </Text>
       </Billboard>      
       <group name="Scene">
         <group name="Armature" rotation={[Math.PI / 2, 0, 0]}>
           <primitive object={nodes.mixamorigHips} />
-          <skinnedMesh name="mesh_char_88" geometry={nodes.mesh_char_88.geometry} material={materials._087_HotDog} skeleton={nodes.mesh_char_88.skeleton} morphTargetDictionary={nodes.mesh_char_88.morphTargetDictionary} morphTargetInfluences={nodes.mesh_char_88.morphTargetInfluences} />
+          <skinnedMesh
+          castShadow
+          receiveShadow
+          name="mesh_char_88" geometry={nodes.mesh_char_88.geometry} material={materials._087_HotDog} skeleton={nodes.mesh_char_88.skeleton} morphTargetDictionary={nodes.mesh_char_88.morphTargetDictionary} morphTargetInfluences={nodes.mesh_char_88.morphTargetInfluences} />
         </group>
       </group>
     </group>

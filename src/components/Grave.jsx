@@ -20,7 +20,10 @@ export function Grave({player,...props}) {
 
   return (
     <group {...props} dispose={null} ref={ref}>
-      <mesh geometry={nodes.grave_A.geometry} material={materials.HalloweenBits} />    
+      <mesh 
+      castShadow
+      receiveShadow
+      geometry={nodes.grave_A.geometry} material={materials.HalloweenBits} />    
       <mesh geometry={nodes.Plane.geometry} position={[0, 0, 1.406]}>
         <meshBasicMaterial map={texture} />
       </mesh>

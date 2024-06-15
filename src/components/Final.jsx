@@ -23,29 +23,48 @@ export function Final(props) {
       <group name="Scene">
         <group name="Armature" position={[-7.466, 4.008, 58.837]} rotation={[Math.PI / 2, 0, 0]} scale={6.835}>
           <primitive object={nodes.mixamorigHips} />
-          <skinnedMesh name="mesh_char_061" geometry={nodes.mesh_char_061.geometry} material={materials._058_Shiro} skeleton={nodes.mesh_char_061.skeleton} morphTargetDictionary={nodes.mesh_char_061.morphTargetDictionary} morphTargetInfluences={nodes.mesh_char_061.morphTargetInfluences} />
+          <skinnedMesh
+          castShadow
+          receiveShadow
+          name="mesh_char_061" geometry={nodes.mesh_char_061.geometry} material={materials._058_Shiro} skeleton={nodes.mesh_char_061.skeleton} morphTargetDictionary={nodes.mesh_char_061.morphTargetDictionary} morphTargetInfluences={nodes.mesh_char_061.morphTargetInfluences} />
         </group>
         <group name="Armature001" position={[31.997, 7.775, 69.842]} rotation={[Math.PI / 2, 0, 0]} scale={6.835}>
           <primitive object={nodes.mixamorigHips_1} />
         </group>
         <group name="Box001">
-          <mesh name="Box001_1" geometry={nodes.Box001_1.geometry} material={materials['13___Default']} />
-          <mesh name="Box001_1_1" geometry={nodes.Box001_1_1.geometry} material={materials['14___Default']} />
-          <mesh name="Box001_1_2" geometry={nodes.Box001_1_2.geometry} material={materials.Material__26} />
-          <mesh name="Box001_1_3" geometry={nodes.Box001_1_3.geometry} material={materials['07___Default']} />
-          <mesh name="Box001_1_4" geometry={nodes.Box001_1_4.geometry} material={materials['20___Default']} />
-          <mesh name="Box001_1_5" geometry={nodes.Box001_1_5.geometry} material={materials.Material__29} />
-          <mesh name="Box001_1_6" geometry={nodes.Box001_1_6.geometry} material={materials.Material__30} />
-          <mesh name="Box001_1_7" geometry={nodes.Box001_1_7.geometry} material={materials['01___Default']} />
-          <mesh name="Box001_1_8" geometry={nodes.Box001_1_8.geometry} material={materials['02___Default']} />
-          <mesh name="Box001_1_9" geometry={nodes.Box001_1_9.geometry} material={materials['08___Default']} />
-          <mesh name="Box001_1_10" geometry={nodes.Box001_1_10.geometry} material={materials['19___Default']} />
+          <mesh castShadow
+          receiveShadow name="Box001_1" geometry={nodes.Box001_1.geometry} material={materials['13___Default']} />
+          <mesh castShadow
+          receiveShadow name="Box001_1_1" geometry={nodes.Box001_1_1.geometry} material={materials['14___Default']} />
+          <mesh castShadow
+          receiveShadow name="Box001_1_2" geometry={nodes.Box001_1_2.geometry} material={materials.Material__26} />
+          <mesh castShadow
+          receiveShadow name="Box001_1_3" geometry={nodes.Box001_1_3.geometry} material={materials['07___Default']} />
+          <mesh castShadow
+          receiveShadow name="Box001_1_4" geometry={nodes.Box001_1_4.geometry} material={materials['20___Default']} />
+          <mesh castShadow
+          receiveShadow name="Box001_1_5" geometry={nodes.Box001_1_5.geometry} material={materials.Material__29} />
+          <mesh castShadow
+          receiveShadow name="Box001_1_6" geometry={nodes.Box001_1_6.geometry} material={materials.Material__30} />
+          <mesh castShadow
+          receiveShadow name="Box001_1_7" geometry={nodes.Box001_1_7.geometry} material={materials['01___Default']} />
+          <mesh castShadow
+          receiveShadow name="Box001_1_8" geometry={nodes.Box001_1_8.geometry} material={materials['02___Default']} />
+          <mesh castShadow
+          receiveShadow name="Box001_1_9" geometry={nodes.Box001_1_9.geometry} material={materials['08___Default']} />
+          <mesh castShadow
+          receiveShadow name="Box001_1_10" geometry={nodes.Box001_1_10.geometry} material={materials['19___Default']} />
         </group>
-        <mesh name="Object002" geometry={nodes.Object002.geometry} material={materials['07___Default']} />
-        <mesh name="Object003" geometry={nodes.Object003.geometry} material={materials['07___Default']} />
-        <mesh name="Object004" geometry={nodes.Object004.geometry} material={materials['07___Default']} />
-        <mesh name="Text001" geometry={nodes.Text001.geometry} material={materials['15___Default']} />
-        <mesh name="Box002" geometry={nodes.Box002.geometry} material={materials.wire_184155229} />
+        <mesh castShadow
+          receiveShadow name="Object002" geometry={nodes.Object002.geometry} material={materials['07___Default']} />
+        <mesh castShadow
+          receiveShadow name="Object003" geometry={nodes.Object003.geometry} material={materials['07___Default']} />
+        <mesh castShadow
+          receiveShadow name="Object004" geometry={nodes.Object004.geometry} material={materials['07___Default']} />
+        <mesh castShadow
+          receiveShadow name="Text001" geometry={nodes.Text001.geometry} material={materials['15___Default']} />
+        <mesh castShadow
+          receiveShadow name="Box002" geometry={nodes.Box002.geometry} material={materials.wire_184155229} />
       </group>
     </group>
   )

@@ -22,7 +22,10 @@ export function Principal(props) {
       <group name="Scene">
         <group name="Armature" rotation={[Math.PI / 2, 0, 0]}>
           <primitive object={nodes.mixamorigHips} />
-          <skinnedMesh name="mesh_char_061" geometry={nodes.mesh_char_061.geometry} material={materials._058_Shiro} skeleton={nodes.mesh_char_061.skeleton} morphTargetDictionary={nodes.mesh_char_061.morphTargetDictionary} morphTargetInfluences={nodes.mesh_char_061.morphTargetInfluences} />
+          <skinnedMesh
+          castShadow
+          receiveShadow
+          name="mesh_char_061" geometry={nodes.mesh_char_061.geometry} material={materials._058_Shiro} skeleton={nodes.mesh_char_061.skeleton} morphTargetDictionary={nodes.mesh_char_061.morphTargetDictionary} morphTargetInfluences={nodes.mesh_char_061.morphTargetInfluences} />
         </group>
       </group>
     </group>

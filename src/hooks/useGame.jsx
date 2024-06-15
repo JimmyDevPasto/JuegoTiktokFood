@@ -394,6 +394,8 @@ export const GameProvider = ({ children }) => {
         status,
         timer,
         leaderboard,
+        isFrismanAttackable,
+        isHotDogManAttackable
       }}
     >
       {children}

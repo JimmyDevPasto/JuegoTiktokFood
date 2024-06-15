@@ -2,6 +2,7 @@ import { Canvas } from "@react-three/fiber";
 import { Experience } from "./components/Experience";
 import { GameProvider } from "./hooks/useGame";
 import { UI } from "./components/UI";
+import { EffectComposer, Bloom } from "@react-three/postprocessing";
 
 export const DEBBUG_MODE = true;
 
@@ -22,6 +23,9 @@ function App() {
         <color attach="background" args={["#333"]} />
          <fog attach="fog" args={["#333", 14, 35]} /> 
         <Experience />
+        <EffectComposer>
+           <Bloom mipmapBlur intensity={1.2} luminanceThreshold={1} />
+        </EffectComposer> 
       </Canvas>
       <UI/>
     </GameProvider>
