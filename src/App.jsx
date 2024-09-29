@@ -4,7 +4,7 @@ import { GameProvider } from "./hooks/useGame";
 import { UI } from "./components/UI";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 
-export const DEBBUG_MODE = true;
+export const DEBBUG_MODE = false;
 
 export const FRIESMAN_COLUMNS =4;
 export const FRIESMAN_SPACE_COLUMNS =2.5;
